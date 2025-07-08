@@ -56,6 +56,7 @@ public class FileWriteDataOutputStreamInt {
 		}
 	}
 	
+	// Questo metodo legge i numeri interi dal file fornito
 	public void readIntFromWritedFile(String fileToRead) {
 		
 		
