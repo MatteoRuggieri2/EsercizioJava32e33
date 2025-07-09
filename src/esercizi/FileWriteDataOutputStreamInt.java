@@ -45,11 +45,9 @@ public class FileWriteDataOutputStreamInt {
 			// Scrivo sul file
 			DataOutputStream out = new DataOutputStream(new FileOutputStream(fileName));
 			for (Integer integer : integerList) {
-				
-					out.writeInt(integer);
-				
-				
+				out.writeInt(integer);
 			}
+			out.close();
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -67,7 +65,7 @@ public class FileWriteDataOutputStreamInt {
 			e.printStackTrace();
 		}
 		
-		// NON LEGGE I NUMERI
+		//BUG -> NON LEGGE I NUMERI
 		int unit = 0;
 		int sum = 0;
 		
