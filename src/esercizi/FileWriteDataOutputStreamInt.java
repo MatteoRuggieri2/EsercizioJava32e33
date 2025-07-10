@@ -14,6 +14,13 @@ import java.util.Scanner;
 public class FileWriteDataOutputStreamInt {
 	
 	private List<Integer> integerList = new ArrayList<>();
+	
+	//TODO LIST
+	// - Analizzare la consegna dell'esercizio
+	// - Controllare i metodi già scritti
+	// - Individuare eventuali bug
+	// - Risolvere problemi riscontrati
+	// - Scrivere i test JUnit
 
 	// Questo metodo legge e salva i dati dal file chiamato con il nome passato come argomento
 	public List<Integer> readAndStoreFileData(String fileName) {
