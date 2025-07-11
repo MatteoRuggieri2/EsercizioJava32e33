@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class FileWriteDataOutputStreamInt {
 	
 	private List<Integer> integerList = new ArrayList<>();
+	private String integerFileTxt = "src/text_files/integer.txt";
 	
 	//TODO LIST
 	// - Analizzare la consegna dell'esercizio
@@ -21,13 +22,29 @@ public class FileWriteDataOutputStreamInt {
 	// - Individuare eventuali bug
 	// - Risolvere problemi riscontrati
 	// - Scrivere i test JUnit
-
-	// Questo metodo legge e salva i dati dal file chiamato con il nome passato come argomento
-	public List<Integer> readAndStoreFileData(String fileName) {
+	
+	public static void main(String[] args) {
+		new FileWriteDataOutputStreamInt().runEx1();
+	}
+	
+	private void runEx1() {
 		
-		// Metto il file in un oggetto e inizializzo uno scanner
+		// Leggere int da integer.txt
+		integerList = readIntegerFromFile(integerFileTxt);
+		
+		for (Integer integer : integerList) {
+			System.out.println(integer);
+		}
+		
+	}
+	
+	// Questo metodo legge gli interi contenuti nel file con nome l'argomento passato.
+	public List<Integer> readIntegerFromFile(String fileName) {
+		List<Integer> result = new ArrayList<>();
+		
 		File fileToRead = new File(fileName);
 		Scanner sc = null;
+		
 		try {
 			sc = new Scanner(fileToRead);
 		} catch (FileNotFoundException e) {
@@ -36,13 +53,22 @@ public class FileWriteDataOutputStreamInt {
 		
 		// Finchè sono presenti dati nel file, li salvo nella lista
 		while (sc.hasNext()) {
-			this.integerList.add(sc.nextInt());
+			result.add(sc.nextInt());
 		}
+		
 		sc.close();
 		
-		return integerList;
-
+		return result;
 	}
+	
+	
+	
+	
+	
+	
+	
+	// TO CHECK
+	// ---------------------
 	
 	// Questo metodo stampa i dati nel file passato come parametro
 	public void printDataInFile(String fileName, List<Integer> integerList) {
