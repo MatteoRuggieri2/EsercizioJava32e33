@@ -30,7 +30,7 @@ public class FileWriteDataOutputStreamInt {
 	private void runEx1() {
 		
 		// Leggere int da integer.txt
-		integerList = readIntegerFromFile(integerFileTxt);
+		this.integerList = readIntegerFromFile(integerFileTxt);
 		
 		for (Integer integer : integerList) {
 			System.out.println(integer);
@@ -60,6 +60,14 @@ public class FileWriteDataOutputStreamInt {
 		
 		return result;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
