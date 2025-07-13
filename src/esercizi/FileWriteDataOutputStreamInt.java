@@ -15,6 +15,7 @@ public class FileWriteDataOutputStreamInt {
 	
 	private List<Integer> integerList = new ArrayList<>();
 	private String integerFileTxt = "src/text_files/integer.txt";
+	private String integerFileDat = "src/text_files/integer.dat";
 	
 	//TODO LIST
 	// - Analizzare la consegna dell'esercizio
@@ -62,7 +63,20 @@ public class FileWriteDataOutputStreamInt {
 	}
 	
 	
-	
+	public void printIntegerInFile(List<Integer> intList, String file) {
+		try {
+			DataOutputStream out = new DataOutputStream(new FileOutputStream(file));
+			
+			for (Integer integer : intList) {
+				out.writeInt(integer);
+			}
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	
 	
