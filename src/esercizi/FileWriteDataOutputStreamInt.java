@@ -31,11 +31,16 @@ public class FileWriteDataOutputStreamInt {
 	private void runEx1() {
 		
 		// Leggere int da integer.txt
-		this.integerList = readIntegerFromFile(integerFileTxt);
+		this.integerList = readIntegerFromFile(this.integerFileTxt);
 		
-		for (Integer integer : integerList) {
+		System.out.println("INTERI LETTI DAL FILE:\n");
+		for (Integer integer : this.integerList) {
 			System.out.println(integer);
 		}
+		
+		printIntegerInFile(integerList, integerFileDat);
+		System.out.println("\nINTERI SCRITTI IN 'integer.dat'");
+		
 		
 	}
 	
