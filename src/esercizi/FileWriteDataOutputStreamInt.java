@@ -67,7 +67,7 @@ public class FileWriteDataOutputStreamInt {
 		return result;
 	}
 	
-	
+	// Questo metodo stampa nel file .dat fornito la lista di byte in formato byte.
 	public void printIntegerInFile(List<Integer> intList, String file) {
 		try {
 			DataOutputStream out = new DataOutputStream(new FileOutputStream(file));
@@ -75,6 +75,8 @@ public class FileWriteDataOutputStreamInt {
 			for (Integer integer : intList) {
 				out.writeInt(integer);
 			}
+			
+			out.close();
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
