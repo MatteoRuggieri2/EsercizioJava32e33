@@ -28,6 +28,10 @@ public class FileWriteDataOutputStreamInt {
 		new FileWriteDataOutputStreamInt().runEx1();
 	}
 	
+	
+	
+	// EX 1
+	
 	private void runEx1() {
 		
 		// Leggere int da integer.txt
@@ -85,6 +89,41 @@ public class FileWriteDataOutputStreamInt {
 		}
 	}
 	
+	
+	
+	// EX 2
+	
+	private void runEx2() {
+		
+		// Leggi gli interi dal file e stampali
+		
+		
+		// Fai la somma degli interi
+		
+		
+	}
+	
+	// Questo metodo legge da un file ".dat" gli interi sotto forma di byte
+	public List<Integer> readByteIntegerFromFile(String fileName) {
+		
+		List<Integer> result = new ArrayList<Integer>();
+		
+		DataInputStream in = null;
+		
+		try {
+			in = new DataInputStream(new FileInputStream(this.integerFileDat));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			while (true) {
+				result.add(in.readInt());
+			}
+		} catch (IOException e) {
+			return result;
+		}
+	}
 	
 	
 	
