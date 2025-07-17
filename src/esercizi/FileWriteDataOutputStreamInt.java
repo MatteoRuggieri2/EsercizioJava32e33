@@ -25,7 +25,9 @@ public class FileWriteDataOutputStreamInt {
 	// - Scrivere i test JUnit
 	
 	public static void main(String[] args) {
-		new FileWriteDataOutputStreamInt().runEx1();
+		FileWriteDataOutputStreamInt fwdosi = new FileWriteDataOutputStreamInt();
+		fwdosi.runEx1();
+		fwdosi.runEx2();
 	}
 	
 	
@@ -95,10 +97,11 @@ public class FileWriteDataOutputStreamInt {
 	
 	private void runEx2() {
 		
-		// Leggi gli interi dal file e stampali
+		// Leggo i numeri dal file .dat
+		List<Integer> intRead = readByteIntegerFromFile(integerFileDat);
 		
+		// Sommo i numeri letti
 		
-		// Fai la somma degli interi
 		
 		
 	}
