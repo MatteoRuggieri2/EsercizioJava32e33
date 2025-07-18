@@ -45,7 +45,7 @@ public class FileWriteDataOutputStreamInt {
 		}
 		
 		printIntegerInFile(integerList, integerFileDat);
-		System.out.println("\nINTERI SCRITTI IN 'integer.dat'");
+		System.out.println("\nSCRITTURA NEL FILE 'integer.dat' COMPLETATA!");
 		
 		
 	}
@@ -101,7 +101,7 @@ public class FileWriteDataOutputStreamInt {
 		List<Integer> intRead = readByteIntegerFromFile(integerFileDat);
 		
 		// Sommo i numeri letti
-		
+		System.out.println("\nSomma degli interi: " + sumIntegerList(intRead));
 		
 		
 	}
@@ -128,76 +128,10 @@ public class FileWriteDataOutputStreamInt {
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	// TO CHECK
-	// ---------------------
-	
-	// Questo metodo stampa i dati nel file passato come parametro
-	public void printDataInFile(String fileName, List<Integer> integerList) {
-		
-		try {
-			
-			// Scrivo sul file
-			DataOutputStream out = new DataOutputStream(new FileOutputStream(fileName));
-			for (Integer integer : integerList) {
-				out.writeInt(integer);
-			}
-			out.close();
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	// Questo metodo somma tutti gli interi contenuti nella lista passata come argomento
+	public int sumIntegerList(List<Integer> intList) {
+		return intList.stream()
+                .reduce(0, Integer::sum);
 	}
-	
-	// Questo metodo legge i numeri interi dal file fornito
-	public void readIntFromWritedFile(String fileToRead) {
-		
-		
-		DataInputStream in = null;
-		try {
-			in = new DataInputStream(new FileInputStream(fileToRead));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		//BUG -> NON LEGGE I NUMERI
-		int unit = 0;
-		int sum = 0;
-		
-			
-			
-		try {
-			System.out.println("\n--- NUMERI CONVERTITI ---");
-			while (true) {
-				unit = in.readInt(); // Converto i byte in int
-				sum += unit; // Faccio la somma di tutti i miei numeri
-				System.out.println(unit);
-			}
-				
-		} catch (IOException e) {
-			System.out.println("\n--- SOMMA DEI NUMERI CONVERTITI ---");
-			System.out.println(sum);
-//				return new ArrayList<Integer>();
-		}
-			
-		
-		
-		
-		
 
-		
-		
-//		return new ArrayList<Integer>();
-	
-
-}
 }
