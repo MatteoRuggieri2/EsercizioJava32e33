@@ -1,6 +1,10 @@
 package esercizi;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.io.FileNotFoundException;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +21,7 @@ class FileWriteDataOutputStreamIntTest {
 	}
 	
 	@Test
-	void testReadIntegerFromFile() {
+	void testReadIntegerFromFile() throws FileNotFoundException {
 		
 		int[] fileIntArr = fwdosi.readIntegerFromFile(integerFileTxt)
                 .stream()
@@ -25,6 +29,16 @@ class FileWriteDataOutputStreamIntTest {
                 .toArray();
 
 		assertArrayEquals(expFileIntegerArr, fileIntArr);
+	}
+	
+	@Test
+	void testReadIntegerFromFileKO() {
+	    assertThrows(FileNotFoundException.class, () -> {
+	        fwdosi.readIntegerFromFile("src/text_files/integer.err")
+	              .stream()
+	              .mapToInt(Integer::intValue)
+	              .toArray();
+	    });
 	}
 
 }

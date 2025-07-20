@@ -37,7 +37,11 @@ public class FileWriteDataOutputStreamInt {
 	private void runEx1() {
 		
 		// Leggere int da integer.txt
-		this.integerList = readIntegerFromFile(this.integerFileTxt);
+		try {
+			this.integerList = readIntegerFromFile(this.integerFileTxt);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		
 		System.out.println("INTERI LETTI DAL FILE:\n");
 		for (Integer integer : this.integerList) {
@@ -51,17 +55,13 @@ public class FileWriteDataOutputStreamInt {
 	}
 	
 	// Questo metodo legge gli interi contenuti nel file con nome l'argomento passato.
-	public List<Integer> readIntegerFromFile(String fileName) {
+	public List<Integer> readIntegerFromFile(String fileName) throws FileNotFoundException {
 		List<Integer> result = new ArrayList<>();
 		
 		File fileToRead = new File(fileName);
 		Scanner sc = null;
 		
-		try {
-			sc = new Scanner(fileToRead);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+		sc = new Scanner(fileToRead);
 		
 		// Finchè sono presenti dati nel file, li salvo nella lista
 		while (sc.hasNext()) {
