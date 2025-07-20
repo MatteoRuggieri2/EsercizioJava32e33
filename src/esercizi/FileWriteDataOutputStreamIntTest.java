@@ -40,5 +40,16 @@ class FileWriteDataOutputStreamIntTest {
 	              .toArray();
 	    });
 	}
+	
+	@Test
+	void testReadByteIntegerFromFile() {
+
+		int[] fileByteIntArr = fwdosi.readByteIntegerFromFile(integerFileDat)
+				.stream()
+				.mapToInt(Integer::intValue)
+				.toArray();
+				
+		assertArrayEquals(expFileIntegerArr, fileByteIntArr);
+	}
 
 }
