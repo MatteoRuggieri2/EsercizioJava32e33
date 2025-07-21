@@ -42,7 +42,7 @@ class FileWriteDataOutputStreamIntTest {
 	}
 	
 	@Test
-	void testReadByteIntegerFromFile() {
+	void testReadByteIntegerFromFile() throws FileNotFoundException {
 
 		int[] fileByteIntArr = fwdosi.readByteIntegerFromFile(integerFileDat)
 				.stream()
@@ -50,6 +50,16 @@ class FileWriteDataOutputStreamIntTest {
 				.toArray();
 				
 		assertArrayEquals(expFileIntegerArr, fileByteIntArr);
+	}
+	
+	@Test
+	void testReadByteIntegerFromFileKO() {
+		assertThrows(FileNotFoundException.class, () -> {
+	        fwdosi.readByteIntegerFromFile("src/text_files/integer.err")
+	              .stream()
+	              .mapToInt(Integer::intValue)
+	              .toArray();
+	    });
 	}
 
 }

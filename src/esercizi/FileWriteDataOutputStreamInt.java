@@ -2,6 +2,7 @@ package esercizi;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -98,7 +99,12 @@ public class FileWriteDataOutputStreamInt {
 	private void runEx2() {
 		
 		// Leggo i numeri dal file .dat
-		List<Integer> intRead = readByteIntegerFromFile(integerFileDat);
+		List<Integer> intRead = List.of();
+		try {
+			intRead = readByteIntegerFromFile(integerFileDat);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		
 		// Sommo i numeri letti
 		System.out.println("\nSomma degli interi: " + sumIntegerList(intRead));
@@ -107,27 +113,29 @@ public class FileWriteDataOutputStreamInt {
 	}
 	
 	// Questo metodo legge da un file ".dat" gli interi sotto forma di byte
-	public List<Integer> readByteIntegerFromFile(String fileName) {
+	public List<Integer> readByteIntegerFromFile(String fileName) throws FileNotFoundException {
 		
 		List<Integer> result = new ArrayList<Integer>();
 		
-		DataInputStream in = null;
-		
-		try {
-			in = new DataInputStream(new FileInputStream(this.integerFileDat));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+		DataInputStream in = new DataInputStream(new FileInputStream(fileName));
 		
 		try {
 			while (true) {
 				result.add(in.readInt());
 			}
-		} catch (IOException e) {
-			return result;
-		}
+		} catch (EOFException e) {
+	        // Fine del file → caso normale, ritorna il risultato
+	        return result;
+	    } catch (FileNotFoundException e) {
+	        // Rilancia per permettere a JUnit di intercettarla
+	        throw e;
+	    } catch (IOException e) {
+	        // Qualsiasi altra IOException → puoi decidere se rilanciare come Runtime
+	        throw new RuntimeException("Errore nella lettura del file .dat", e);
+	    }
+		
 	}
-	
+
 	// Questo metodo somma tutti gli interi contenuti nella lista passata come argomento
 	public int sumIntegerList(List<Integer> intList) {
 		return intList.stream()
