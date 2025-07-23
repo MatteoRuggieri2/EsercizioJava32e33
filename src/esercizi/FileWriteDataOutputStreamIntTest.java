@@ -1,9 +1,11 @@
 package esercizi;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.FileNotFoundException;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -14,6 +16,7 @@ class FileWriteDataOutputStreamIntTest {
 	static String integerFileTxt = "src/text_files/integer.txt";
 	static String integerFileDat = "src/text_files/integer.dat";
 	static int[] expFileIntegerArr = { 1, 3, 5, 6, 25, 60, 345, 89, 45, 2, 4, 98 };
+	static List<Integer> fileInteger = List.of(1, 3, 5, 6, 25, 60, 345, 89, 45, 2, 4, 98);
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -60,6 +63,12 @@ class FileWriteDataOutputStreamIntTest {
 	              .mapToInt(Integer::intValue)
 	              .toArray();
 	    });
+	}
+	
+	@Test
+	void testSumIntegerList() {
+		assertEquals(683, fwdosi.sumIntegerList(fileInteger));
+		assertEquals(30, fwdosi.sumIntegerList(List.of(10, 10, 10)));
 	}
 
 }
