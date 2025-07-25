@@ -18,12 +18,7 @@ public class FileWriteDataOutputStreamInt {
 	private String integerFileTxt = "src/text_files/integer.txt";
 	private String integerFileDat = "src/text_files/integer.dat";
 	
-	//TODO LIST
-	// - Analizzare la consegna dell'esercizio
-	// - Controllare i metodi già scritti
-	// - Individuare eventuali bug
-	// - Risolvere problemi riscontrati
-	// - Scrivere i test JUnit
+	
 	
 	public static void main(String[] args) {
 		FileWriteDataOutputStreamInt fwdosi = new FileWriteDataOutputStreamInt();
